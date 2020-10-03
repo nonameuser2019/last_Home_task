@@ -6,7 +6,7 @@ def test_reg_shareline(browser):
     main_page.go_to_site()
     main_page.enter_signup()
     main_page.enter_zip_code()
-    message, message2, message3 = main_page.filling_out_reg_form()
-    assert message == 'Account is created!'
-    assert len(message2) > 0
-    assert len(message3) > 0
+    email, password = main_page.filling_out_reg_form()
+    main_page.go_to_site()
+    message = main_page.autorization_user(email, password)
+    assert len(message) > 0
